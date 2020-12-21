@@ -137,6 +137,12 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
       this.solarCardElements.gridToBattery.circleColor = "var(--info-color)";
     }
 
+    if(config.battery_to_grid_entity != undefined){
+      this.solarCardElements['batteryToGrid'] = new sensorCardData();
+      this.solarCardElements.batteryToGrid.entity = config.battery_to_grid_entity;
+      this.solarCardElements.batteryToGrid.circleColor = "var(--info-color)";
+    }
+
     if(config.car_charging_entity != undefined){
       this.carCharge = new sensorCardData();
       this.carCharge.entity = config.car_charging_entity;
@@ -290,6 +296,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
   #battery_charging_line, 
   #grid_feed_in_line, 
   #grid_to_battery_line, 
+  #battery_to_grid_line, 
   #car_consumption_line{
     stroke:var(--info-color);
     fill:none;
@@ -306,6 +313,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
   #solar_consumption_line, #grid_feed_in_line, #battery_charging_line{
     stroke:var(--warning-color);
   }
+  #battery_to_grid_line,
   #battery_consumption_line{
     stroke:var(--success-color);
   }
@@ -362,6 +370,10 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
 
     if(this.solarCardElements.gridToBattery != undefined){
       this.createCircleAndLine(this.solarCardElements.gridToBattery, "grid_to_battery", "M10,100 C100,100 100,100 100,200");
+    }
+
+    if(this.solarCardElements.batteryToGrid != undefined){
+      this.createCircleAndLine(this.solarCardElements.batteryToGrid, "battery_to_grid", "M10,100 C100,100 100,100 100,200");
     }
 
     if(this.solarCardElements.batteryCharge != undefined){
@@ -518,6 +530,9 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
     if(this.solarCardElements.gridToBattery != undefined){
       this.correctDimensionsOfCircleLineAndContainer("grid_to_battery", 'M0,'+half+' C'+half+','+ half + ' '+half +','+half+' '+half+','+half * 2);
     }
+    if(this.solarCardElements.batteryToGrid != undefined){
+      this.correctDimensionsOfCircleLineAndContainer("battery_to_grid", 'M0,'+half+' C'+half+','+ half + ' '+half +','+half+' '+half+','+half * 2);
+    }
     //battery
     if(this.solarCardElements.batteryCharge != undefined){
       this.correctDimensionsOfCircleLineAndContainer('battery_consumption', 'M'+ half +','+ half * 2 +' C'+ half +','+ half +' '+ half +','+ half +' '+ half * 2 +','+ half);
@@ -572,6 +587,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
     }
 
     if(this.gridToBattery != undefined) this.updateOneCircle(timestamp, this.gridToBattery);
+    if(this.batteryToGrid != undefined) this.updateOneCircle(timestamp, this.batteryToGrid);
 
     if(this.carCharge != undefined) this.updateOneCircle(timestamp, this.carCharge);
     if(this.car2Charge != undefined) this.updateOneCircle(timestamp, this.car2Charge);
