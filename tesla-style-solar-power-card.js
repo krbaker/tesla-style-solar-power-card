@@ -531,7 +531,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
       this.correctDimensionsOfCircleLineAndContainer("grid_to_battery", 'M0,'+half+' C'+half+','+ half + ' '+half +','+half+' '+half+','+half * 2);
     }
     if(this.solarCardElements.batteryToGrid != undefined){
-      this.correctDimensionsOfCircleLineAndContainer("battery_to_grid", 'M0,'+half+' C'+half+','+ half + ' '+half +','+half+' '+half+','+half * 2);
+      this.correctDimensionsOfCircleLineAndContainer("battery_to_grid", 'M'+half+','+half*2+' C'+half+','+ half + ' '+half +','+half+' 0,'+half);
     }
     //battery
     if(this.solarCardElements.batteryCharge != undefined){
