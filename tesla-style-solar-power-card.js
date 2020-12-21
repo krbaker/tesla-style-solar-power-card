@@ -140,7 +140,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
     if(config.battery_to_grid_entity != undefined){
       this.solarCardElements['batteryToGrid'] = new sensorCardData();
       this.solarCardElements.batteryToGrid.entity = config.battery_to_grid_entity;
-      this.solarCardElements.batteryToGrid.circleColor = "var(--info-color)";
+      this.solarCardElements.batteryToGrid.circleColor = "var(--success-color)";
     }
 
     if(config.car_charging_entity != undefined){
@@ -373,7 +373,7 @@ class TeslaStyleSolarPowerCard extends HTMLElement {
     }
 
     if(this.solarCardElements.batteryToGrid != undefined){
-      this.createCircleAndLine(this.solarCardElements.batteryToGrid, "battery_to_grid", "M10,100 C100,100 100,100 100,200");
+      this.createCircleAndLine(this.solarCardElements.batteryToGrid, "battery_to_grid", "M100,200 C100,100 100,100 10,100");
     }
 
     if(this.solarCardElements.batteryCharge != undefined){
